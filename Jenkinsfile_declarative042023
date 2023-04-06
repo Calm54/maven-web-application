@@ -1,9 +1,7 @@
 pipeline{
-  agent {
-    label 'master'
-  } 
+  agent any
   tools {
-    maven 'maven3.9.1'
+    maven 'Maven3.9.1'
   }
   //options{}
   //triggers{}
@@ -41,8 +39,6 @@ pipeline{
     deploy adapters: [tomcat9(credentialsId: 'Jenkins-cred', path: '', url: 'http://54.176.195.30:8080/')], contextPath: null, war: 'target/*war'
         }
    }
-   
-   //stage('5deploy') {}
   }
 post{ 
     always{
